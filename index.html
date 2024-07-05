@@ -38,6 +38,13 @@
             max-width: 100%;
             box-sizing: border-box;
             height: 100vh;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .container.fade-in {
+            opacity: 1;
+            transform: translateY(0);
         }
         .title {
             writing-mode: vertical-rl;
@@ -107,6 +114,51 @@
         .page-indicator div.active {
             color: #333;
         }
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .menu-content {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .menu-overlay.active .menu-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .menu-content a {
+            display: block;
+            font-size: 2rem;
+            margin: 1rem 0;
+            color: #000;
+            text-decoration: none;
+        }
 
         @media (max-width: 768px) {
             .container {
@@ -139,6 +191,16 @@
     </style>
 </head>
 <body>
+    <div class="hamburger-menu">☰</div>
+    <div class="menu-overlay">
+        <div class="menu-content">
+            <a href="#page1">一. ホーム</a>
+            <a href="#page2">二. 餃子の作り方</a>
+            <a href="#page3">三. 美味しい食べ方</a>
+            <a href="#page4">四. 餃子音頭</a>
+            <a href="#page5">五. ジョーク</a>
+        </div>
+    </div>
     <div class="page-container">
         <div class="page" id="page1">
             <div class="container">
@@ -154,53 +216,61 @@
             </div>
         </div>
         <div class="page" id="page2">
-            <div class="recipe">
-                <h2>餃子の作り方</h2>
-                <ol>
-                    <li>一、ボウルに豚ひき肉、みじん切りにしたキャベツ、ニラ、ニンニク、生姜を入れる。</li>
-                    <li>二、塩、こしょう、醤油、ごま油を加えてよく混ぜる。</li>
-                    <li>三、餃子の皮の中央に具材を置き、周りに水を塗る。</li>
-                    <li>四、皮の半分を折り、端を押さえながらひだを作る。</li>
-                    <li>五、フライパンに油を熱し、餃子を並べて焼く。</li>
-                    <li>六、焼き色がついたら水を加え、蓋をして蒸し焼きにする。</li>
-                    <li>七、水分がなくなり、餃子の底がカリッとしたら完成。</li>
-                    <li>八、お好みのタレと一緒に召し上がれ。</li>
-                </ol>
+            <div class="container">
+                <div class="recipe">
+                    <h2>餃子の作り方</h2>
+                    <ol>
+                        <li>一、ボウルに豚ひき肉、みじん切りにしたキャベツ、ニラ、ニンニク、生姜を入れる。</li>
+                        <li>二、塩、こしょう、醤油、ごま油を加えてよく混ぜる。</li>
+                        <li>三、餃子の皮の中央に具材を置き、周りに水を塗る。</li>
+                        <li>四、皮の半分を折り、端を押さえながらひだを作る。</li>
+                        <li>五、フライパンに油を熱し、餃子を並べて焼く。</li>
+                        <li>六、焼き色がついたら水を加え、蓋をして蒸し焼きにする。</li>
+                        <li>七、水分がなくなり、餃子の底がカリッとしたら完成。</li>
+                        <li>八、お好みのタレと一緒に召し上がれ。</li>
+                    </ol>
+                </div>
             </div>
         </div>
         <div class="page" id="page3">
-            <div class="recipe">
-                <h2>餃子の美味しい食べ方</h2>
-                <ol>
-                    <li>一、醤油と酢を三対七で混ぜ、好みでラー油を加える。</li>
-                    <li>二、箸で餃子の柔らかい側を持つ。</li>
-                    <li>三、餃子の柔らかい側をタレに軽くつける。</li>
-                    <li>四、できるだけ一口で食べ、肉汁を逃がさないようにする。</li>
-                    <li>五、ビールやハイボールなど、お好みの飲み物と一緒に楽しむ。</li>
-                    <li>六、ポン酢や柚子胡椒など、様々なタレで味の変化を楽しむ。</li>
-                </ol>
+            <div class="container">
+                <div class="recipe">
+                    <h2>餃子の美味しい食べ方</h2>
+                    <ol>
+                        <li>一、醤油と酢を三対七で混ぜ、好みでラー油を加える。</li>
+                        <li>二、箸で餃子の柔らかい側を持つ。</li>
+                        <li>三、餃子の柔らかい側をタレに軽くつける。</li>
+                        <li>四、できるだけ一口で食べ、肉汁を逃がさないようにする。</li>
+                        <li>五、ビールやハイボールなど、お好みの飲み物と一緒に楽しむ。</li>
+                        <li>六、ポン酢や柚子胡椒など、様々なタレで味の変化を楽しむ。</li>
+                    </ol>
+                </div>
             </div>
         </div>
         <div class="page" id="page4">
-            <div class="recipe">
-                <h2>「昭和餃子音頭」</h2>
-                <ol>
-                    <li>焼き餃子 ジュージュー ジュージュー、ビールつまみに 最高さ</li>
-                    <li>お父さんの 給料日は、家族みんなで 餃子パーティー</li>
-                    <li>ソイヤ ソイヤ 餃子音頭、みんなで踊ろう 餃子音頭</li>
-                    <li>ニンニク効いた ニラ餃子、おばちゃんたちの おしゃべりも弾む</li>
-                    <li>隣の太郎くん 大食い選手権、餃子二十個で 優勝だ</li>
-                    <li>ソイヤ ソイヤ 餃子音頭、みんなで踊ろう 餃子音頭</li>
-                </ol>
+            <div class="container">
+                <div class="recipe">
+                    <h2>「昭和餃子音頭」</h2>
+                    <ol>
+                        <li>焼き餃子 ジュージュー ジュージュー、ビールつまみに 最高さ</li>
+                        <li>お父さんの 給料日は、家族みんなで 餃子パーティー</li>
+                        <li>ソイヤ ソイヤ 餃子音頭、みんなで踊ろう 餃子音頭</li>
+                        <li>ニンニク効いた ニラ餃子、おばちゃんたちの おしゃべりも弾む</li>
+                        <li>隣の太郎くん 大食い選手権、餃子二十個で 優勝だ</li>
+                        <li>ソイヤ ソイヤ 餃子音頭、みんなで踊ろう 餃子音頭</li>
+                    </ol>
+                </div>
             </div>
         </div>
         <div class="page" id="page5">
-            <div class="recipe">
-                <h2>「アメリカンジョーク」</h2>
-                <ol>
-                    <li>餃子がバーに入って来て、バーテンダーが「ここはお前の居場所じゃないぜ」と言ったんだ。</li>
-                    <li>すると餃子は「そうさ、僕は包まれる場所を探してるんだ」と答えたんだ。</li>
-                </ol>
+            <div class="container">
+                <div class="recipe">
+                    <h2>「アメリカンジョーク」</h2>
+                    <ol>
+                        <li>餃子がバーに入って来て、バーテンダーが「ここはお前の居場所じゃないぜ」と言ったんだ。</li>
+                        <li>すると餃子は「そうさ、僕は包まれる場所を探してるんだ」と答えたんだ。</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
@@ -216,15 +286,23 @@
         let currentPage = 0;
         const pageContainer = document.querySelector('.page-container');
         const pageIndicators = document.querySelectorAll('.page-indicator div');
+        const containers = document.querySelectorAll('.container');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const menuLinks = document.querySelectorAll('.menu-content a');
         
         // スクロールのしきい値を設定
         const SCROLL_THRESHOLD = 50;
         let scrollAccumulator = 0;
+        let isMenuOpen = false;
+        let isMobile = window.innerWidth <= 768;
 
         function smoothScroll(target) {
             pageContainer.style.transform = `translateX(-${target * 100}vw)`;
             currentPage = target;
             updatePageIndicator();
+            containers.forEach(container => container.classList.remove('fade-in'));
+            setTimeout(fadeInContent, 500); // ページ遷移後にフェードインを適用
         }
 
         function updatePageIndicator() {
@@ -237,24 +315,35 @@
             });
         }
 
+        function fadeInContent() {
+            containers.forEach((container, index) => {
+                if (index === currentPage) {
+                    setTimeout(() => {
+                        container.classList.add('fade-in');
+                    }, 50); // 少し遅延を入れてトランジションを確実に発火させる
+                } else {
+                    container.classList.remove('fade-in');
+                }
+            });
+        }
+
         let scrolling = false;
         let scrollTimeout;
 
-        window.addEventListener('wheel', function(e) {
-            e.preventDefault();
-            if (scrolling) return;
+        function handleScroll(deltaY) {
+            if (scrolling || isMenuOpen) return;
 
             // スクロール量を蓄積
-            scrollAccumulator += Math.abs(e.deltaY);
+            scrollAccumulator += Math.abs(deltaY);
 
             // しきい値を超えた場合にのみページ切り替えを行う
             if (scrollAccumulator > SCROLL_THRESHOLD) {
                 scrolling = true;
                 clearTimeout(scrollTimeout);
 
-                if (e.deltaY > 0 && currentPage < 4) {
+                if (deltaY > 0 && currentPage < 4) {
                     smoothScroll(currentPage + 1);
-                } else if (e.deltaY < 0 && currentPage > 0) {
+                } else if (deltaY < 0 && currentPage > 0) {
                     smoothScroll(currentPage - 1);
                 }
 
@@ -265,43 +354,93 @@
                     scrolling = false;
                 }, 1000);
             }
+        }
+
+        // デスクトップでの水平スクロール
+        window.addEventListener('wheel', function(e) {
+            if (!isMobile) {
+                e.preventDefault();
+                handleScroll(e.deltaY);
+            }
         }, { passive: false });
 
-        let touchStartX = 0;
-        let touchEndX = 0;
+        // モバイルでのタッチ処理
+        let touchStartY = 0;
+        let touchCurrentY = 0;
+        let touchStartTime = 0;
 
         document.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        }, false);
+            if (isMenuOpen) return;
+            touchStartY = e.touches[0].clientY;
+            touchCurrentY = touchStartY;
+            touchStartTime = Date.now();
+            scrollAccumulator = 0;
+        }, { passive: false });
+
+        document.addEventListener('touchmove', function(e) {
+            if (isMenuOpen) {
+                e.preventDefault();
+                return;
+            }
+            if (isMobile) {
+                touchCurrentY = e.touches[0].clientY;
+                const deltaY = touchStartY - touchCurrentY;
+                handleScroll(deltaY);
+            }
+        }, { passive: false });
 
         document.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, false);
+            if (isMenuOpen || !isMobile) return;
+            const touchEndY = e.changedTouches[0].clientY;
+            const deltaY = touchStartY - touchEndY;
+            const touchDuration = Date.now() - touchStartTime;
 
-        function handleSwipe() {
-            if (scrolling) return;
-
-            // スワイプの距離を計算
-            const swipeDistance = Math.abs(touchEndX - touchStartX);
-
-            // スワイプの距離がしきい値を超えた場合にのみページ切り替えを行う
-            if (swipeDistance > SCROLL_THRESHOLD) {
-                scrolling = true;
-                clearTimeout(scrollTimeout);
-
-                if (touchEndX < touchStartX && currentPage < 4) {
+            // 素早いスワイプの場合はページ切り替えを即座に行う
+            if (Math.abs(deltaY) > 50 && touchDuration < 300) {
+                if (deltaY > 0 && currentPage < 4) {
                     smoothScroll(currentPage + 1);
-                }
-                if (touchEndX > touchStartX && currentPage > 0) {
+                } else if (deltaY < 0 && currentPage > 0) {
                     smoothScroll(currentPage - 1);
                 }
-
-                scrollTimeout = setTimeout(() => {
-                    scrolling = false;
-                }, 1000);
             }
-        }
+        }, { passive: false });
+
+        // ハンバーガーメニューの制御
+        hamburgerMenu.addEventListener('click', function() {
+            isMenuOpen = !isMenuOpen;
+            menuOverlay.classList.toggle('active');
+            hamburgerMenu.textContent = isMenuOpen ? '✕' : '☰';
+            if (isMenuOpen) {
+                setTimeout(() => {
+                    document.querySelector('.menu-content').style.opacity = '1';
+                    document.querySelector('.menu-content').style.transform = 'translateY(0)';
+                }, 50);
+            } else {
+                document.querySelector('.menu-content').style.opacity = '0';
+                document.querySelector('.menu-content').style.transform = 'translateY(-20px)';
+            }
+        });
+
+        // メニューリンクのクリックイベント
+        menuLinks.forEach((link, index) => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                smoothScroll(index);
+                isMenuOpen = false;
+                menuOverlay.classList.remove('active');
+                hamburgerMenu.textContent = '☰';
+            });
+        });
+
+        // 初期表示時のフェードイン
+        window.addEventListener('load', function() {
+            fadeInContent();
+        });
+
+        // ウィンドウサイズ変更時の処理
+        window.addEventListener('resize', function() {
+            isMobile = window.innerWidth <= 768;
+        });
     </script>
 </body>
 </html>
