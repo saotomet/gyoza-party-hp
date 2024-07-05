@@ -12,12 +12,26 @@
             overflow: hidden;
             font-family: 'Yuji Syuku', serif;
             color: #000000;
+            background-color: #F5E6D3; /* ベース色 */
+        }
+        .textured-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.1; /* ノイズの強さを調整 */
+            pointer-events: none; /* 下層の要素へのクリックを可能にする */
+            z-index: 1;
         }
         .page-container {
             display: flex;
             width: 500vw;
             height: 100vh;
             transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            position: relative;
+            z-index: 2; /* テクスチャの上にコンテンツを表示 */
         }
         .page {
             display: flex;
@@ -25,7 +39,7 @@
             align-items: center;
             width: 100vw;
             height: 100vh;
-            background-color: #FFFFFF;
+            background-color: transparent; /* 背景色を透明に変更 */
         }
         .container {
             display: flex;
@@ -129,7 +143,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(245, 230, 211, 0.9); /* メニュー背景色を変更 */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -159,7 +173,7 @@
             color: #000;
             text-decoration: none;
         }
-
+    
         @media (max-width: 768px) {
             .container {
                 flex-direction: row-reverse;
@@ -176,7 +190,7 @@
                 font-size: 15rem;
             }
         }
-
+    
         @media (max-width: 480px) {
             .title {
                 font-size: 2rem;
@@ -220,9 +234,9 @@
                 <div class="recipe">
                     <h2>餃子の作り方</h2>
                     <ol>
-                        <li>一、ボウルに豚ひき肉、みじん切りにしたキャベツ、ニラ、ニンニク、生姜を入れる。</li>
+                        <li>一、豚ひき肉、みじん切りにしたキャベツ、ニラ、ニンニク、生姜を入れる。</li>
                         <li>二、塩、こしょう、醤油、ごま油を加えてよく混ぜる。</li>
-                        <li>三、餃子の皮の中央に具材を置き、周りに水を塗る。</li>
+                        <li>三、餃子の皮の中央に具材を置き、周りに西の水を塗る。</li>
                         <li>四、皮の半分を折り、端を押さえながらひだを作る。</li>
                         <li>五、フライパンに油を熱し、餃子を並べて焼く。</li>
                         <li>六、焼き色がついたら水を加え、蓋をして蒸し焼きにする。</li>
@@ -241,7 +255,7 @@
                         <li>二、箸で餃子の柔らかい側を持つ。</li>
                         <li>三、餃子の柔らかい側をタレに軽くつける。</li>
                         <li>四、できるだけ一口で食べ、肉汁を逃がさないようにする。</li>
-                        <li>五、ビールやハイボールなど、お好みの飲み物と一緒に楽しむ。</li>
+                        <li>五、ビールやハイボールなど、お好みの飲み物と一緒に西と楽しむ。</li>
                         <li>六、ポン酢や柚子胡椒など、様々なタレで味の変化を楽しむ。</li>
                     </ol>
                 </div>
