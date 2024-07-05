@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>餃子喰いまつもと</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Yuji Syuku', serif;
+            color: #000000;
+        }
+        .page-container {
+            display: flex;
+            width: 500vw;
+            height: 100vh;
+            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+        .page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: #FFFFFF;
+        }
+        .container {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            position: relative;
+            padding: 2rem;
+            max-width: 100%;
+            box-sizing: border-box;
+            height: 100vh;
+        }
+        .title {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 4rem;
+            line-height: 1.5;
+            margin: 0;
+            z-index: 2;
+        }
+        .title-space {
+            display: inline-block;
+            height: 2rem;
+        }
+        .info, .recipe {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            z-index: 2;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        .gyoza {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            filter: grayscale(100%);
+            opacity: 0.2;
+            z-index: 1;
+        }
+        .recipe {
+            height: 70%;
+        }
+        .recipe h2, .lyrics h2 {
+            margin-bottom: 1rem;
+        }
+        .recipe ol {
+            list-style-type: none;
+            padding: 0;
+        }
+        .recipe li {
+            margin-bottom: 1rem;
+        }
+        .lyrics p {
+            margin-bottom: 1rem;
+        }
+        .lyrics .chorus {
+            font-weight: bold;
+        }
+        .page-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+        }
+        .page-indicator div {
+            font-size: 1.2rem;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+        .page-indicator div.active {
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: row-reverse;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            .title {
+                font-size: 2.5rem;
+            }
+            .info, .recipe, .lyrics {
+                font-size: 1rem;
+            }
+            .gyoza {
+                font-size: 15rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+            .info, .recipe, .lyrics {
+                font-size: 0.8rem;
+            }
+            .gyoza {
+                font-size: 10rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="page" id="page1">
+            <div class="container">
+                <h1 class="title">
+                    餃子喰い<span class="title-space"></span>まつもと
+                </h1>
+                <div class="info">
+                    <p>日時、二〇二四年七月十六日 十八時〜</p>
+                    <p>場所、「魚喰い まつもと」</p>
+                    <p>持ち物、百万円</p>
+                </div>
+                <div class="gyoza">🥟</div>
+            </div>
+        </div>
+        <div class="page" id="page2">
+            <div class="recipe">
+                <h2>餃子の作り方</h2>
+                <ol>
+                    <li>一、ボウルに豚ひき肉、みじん切りにしたキャベツ、ニラ、ニンニク、生姜を入れる。</li>
+                    <li>二、塩、こしょう、醤油、ごま油を加えてよく混ぜる。</li>
+                    <li>三、餃子の皮の中央に具材を置き、周りに水を塗る。</li>
+                    <li>四、皮の半分を折り、端を押さえながらひだを作る。</li>
+                    <li>五、フライパンに油を熱し、餃子を並べて焼く。</li>
+                    <li>六、焼き色がついたら水を加え、蓋をして蒸し焼きにする。</li>
+                    <li>七、水分がなくなり、餃子の底がカリッとしたら完成。</li>
+                    <li>八、お好みのタレと一緒に召し上がれ。</li>
+                </ol>
+            </div>
+        </div>
+        <div class="page" id="page3">
+            <div class="recipe">
+                <h2>餃子の美味しい食べ方</h2>
+                <ol>
+                    <li>一、醤油と酢を三対七で混ぜ、好みでラー油を加える。</li>
+                    <li>二、箸で餃子の柔らかい側を持つ。</li>
+                    <li>三、餃子の柔らかい側をタレに軽くつける。</li>
+                    <li>四、できるだけ一口で食べ、肉汁を逃がさないようにする。</li>
+                    <li>五、ビールやハイボールなど、お好みの飲み物と一緒に楽しむ。</li>
+                    <li>六、ポン酢や柚子胡椒など、様々なタレで味の変化を楽しむ。</li>
+                </ol>
+            </div>
+        </div>
+        <div class="page" id="page4">
+            <div class="recipe">
+                <h2>「昭和餃子音頭」</h2>
+                <ol>
+                    <li>焼き餃子 ジュージュー ジュージュー、ビールつまみに 最高さ</li>
+                    <li>お父さんの 給料日は、家族みんなで 餃子パーティー</li>
+                    <li>ソイヤ ソイヤ 餃子音頭、みんなで踊ろう 餃子音頭</li>
+                    <li>ニンニク効いた ニラ餃子、おばちゃんたちの おしゃべりも弾む</li>
+                    <li>隣の太郎くん 大食い選手権、餃子二十個で 優勝だ</li>
+                    <li>ソイヤ ソイヤ 餃子音頭、みんなで踊ろう 餃子音頭</li>
+                </ol>
+            </div>
+        </div>
+        <div class="page" id="page5">
+            <div class="recipe">
+                <h2>「アメリカンジョーク」</h2>
+                <ol>
+                    <li>餃子がバーに入って来て、バーテンダーが「ここはお前の居場所じゃないぜ」と言ったんだ。</li>
+                    <li>すると餃子は「そうさ、僕は包まれる場所を探してるんだ」と答えたんだ。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="page-indicator">
+        <div class="active">一</div>
+        <div>二</div>
+        <div>三</div>
+        <div>四</div>
+        <div>五</div>
+    </div>
+
+    <script>
+        let currentPage = 0;
+        const pageContainer = document.querySelector('.page-container');
+        const pageIndicators = document.querySelectorAll('.page-indicator div');
+        
+        // スクロールのしきい値を設定
+        const SCROLL_THRESHOLD = 50;
+        let scrollAccumulator = 0;
+
+        function smoothScroll(target) {
+            pageContainer.style.transform = `translateX(-${target * 100}vw)`;
+            currentPage = target;
+            updatePageIndicator();
+        }
+
+        function updatePageIndicator() {
+            pageIndicators.forEach((indicator, index) => {
+                if (index === currentPage) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        let scrolling = false;
+        let scrollTimeout;
+
+        window.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            if (scrolling) return;
+
+            // スクロール量を蓄積
+            scrollAccumulator += Math.abs(e.deltaY);
+
+            // しきい値を超えた場合にのみページ切り替えを行う
+            if (scrollAccumulator > SCROLL_THRESHOLD) {
+                scrolling = true;
+                clearTimeout(scrollTimeout);
+
+                if (e.deltaY > 0 && currentPage < 4) {
+                    smoothScroll(currentPage + 1);
+                } else if (e.deltaY < 0 && currentPage > 0) {
+                    smoothScroll(currentPage - 1);
+                }
+
+                // スクロール蓄積量をリセット
+                scrollAccumulator = 0;
+
+                scrollTimeout = setTimeout(() => {
+                    scrolling = false;
+                }, 1000);
+            }
+        }, { passive: false });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (scrolling) return;
+
+            // スワイプの距離を計算
+            const swipeDistance = Math.abs(touchEndX - touchStartX);
+
+            // スワイプの距離がしきい値を超えた場合にのみページ切り替えを行う
+            if (swipeDistance > SCROLL_THRESHOLD) {
+                scrolling = true;
+                clearTimeout(scrollTimeout);
+
+                if (touchEndX < touchStartX && currentPage < 4) {
+                    smoothScroll(currentPage + 1);
+                }
+                if (touchEndX > touchStartX && currentPage > 0) {
+                    smoothScroll(currentPage - 1);
+                }
+
+                scrollTimeout = setTimeout(() => {
+                    scrolling = false;
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
